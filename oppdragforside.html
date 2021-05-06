@@ -21,8 +21,22 @@
                  </header>
 
 
+    <main>
         
-            <h1>Superchat</h1>
+            <h1>Registrer oppdrag</h1>
+          <form id="oppdragregister"> 
+  <input type="text" id="fname" name="fname" required placeholder="Fornamn"><br><br>
+  <input type="text" id="lname" name="lname" required placeholder="Etternamn"><br><br>
+  <input type="text" id="adresse" required placeholder="Adresse"><br><br>
+  <input type="text" id="postnummer" required placeholder="Postnummer"><br><br>
+  <input type="email" id="epost" required placeholder="Epost"><br><br>
+  <input type="number" id="nummer" required placeholder="Number"><br><br><br><br>
+  <input type="text" id="oppdragg" required placeholder="Oppdrag"><br><br>
+  <input type="date" id="dato" required placeholder="Dato"><br><br>
+  <br><br>
+  <input type="submit" value="Send inn">
+    </form>
+
             <article id="txtMeldingar"></article>
 <!-- The core Firebase JS SDK is always required and must be listed first -->
 <script src="https://www.gstatic.com/firebasejs/8.5.0/firebase-app.js"></script>
@@ -30,7 +44,7 @@
 <!-- TODO: Add SDKs for Firebase products that you want to use
      https://firebase.google.com/docs/web/setup#available-libraries -->
 <script src="https://www.gstatic.com/firebasejs/8.5.0/firebase-analytics.js"></script>
-<script src="/__/firebase/8.4.3/firebase-database.js"></script>
+<script src="/__/firebase/8.5.0/firebase-database.js"></script>
 
 <script>
   // Your web app's Firebase configuration
