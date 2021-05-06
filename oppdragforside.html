@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+
+<html lang="no">
+
+<head>
+    <link rel="stylesheet" href="data.css">
+    <meta charset="UTF-8">
+    <title>Regelverk</title>
+    
+</head>
+<body>
+
+                 <header>
+                        <nav>
+                          <a href="../index.html" class="heim">Voss film AS</a>
+                         <a href="../oppdrag/oppdragforside.html" id="trygg">Oppdrag</a>
+                          <a href="../Tryggleik/tryggleikforside.html">Tryggleik og regelverk</a>
+                         <a href="../Personvern/SosialMe.html">Sosiale medium</a>
+                         <a href="../media/mediaer.html">Bilde og video</a>
+                       </nav>
+                 </header>
+
+
+        
+            <h1>Superchat</h1>
+            <article id="txtMeldingar"></article>
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/8.5.0/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/8.5.0/firebase-analytics.js"></script>
+<script src="/__/firebase/8.4.3/firebase-database.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  var firebaseConfig = {
+    apiKey: "AIzaSyC8X7lZ5hb-WVhRwfi-b_gN1Jon91_928w",
+    authDomain: "oppdrag---ikt-innlevering.firebaseapp.com",
+    databaseURL: "https://oppdrag---ikt-innlevering-default-rtdb.europe-west1.firebasedatabase.app",
+    projectId: "oppdrag---ikt-innlevering",
+    storageBucket: "oppdrag---ikt-innlevering.appspot.com",
+    messagingSenderId: "825686644721",
+    appId: "1:825686644721:web:01926dac9c55cf4d9cd650",
+    measurementId: "G-N25M3V6C5H"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+</script>
+
+<script>
+    let txtMeldingar = document.getElementById("txtMeldingar");
+    let database = firebase.database();
+    let meldingar = database.ref("meldingar");
+    let nyMelding = {
+    "sendar": "Kari Ku",
+    "tekst": "Nu går alt så meget bedre"
+    };
+    meldingar.push(nyMelding);
+    function visMelding(snapshot){
+    var melding = snapshot.val();
+    txtMeldingar.innerHTML += `<p> ${melding.sendar} seier ${melding.tekst}</p>`
+    }
+    meldingar.on("child_added", visMelding);
+    </script>
+
+</body>
+
+</html>
