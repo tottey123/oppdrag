@@ -26,8 +26,17 @@ main img{
     margin-bottom:20px;
     width: 100%;
     padding:20px;
+    
 
 } 
+
+img:hover{
+width:100%;
+width:1080px;
+height:920px;
+transition-duration: 1s;
+
+}
 nav{
     background-color:#faf3ea;
     display:grid;

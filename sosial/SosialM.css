@@ -1,7 +1,6 @@
 body{
     background-color:#eee7de;
     font-family:sans-serif;
-    
 }
 main{
     max-width:1200px;
@@ -10,31 +9,28 @@ main{
     align-items: center;
     margin:auto;
     grid-gap:60px;
-   
 }
 main a{
     text-decoration:none;
     color:black;
 }
 main h1{
-
-    font-size:70px;
-    text-align:center;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+padding: 10px;
+    text-align: center;
+    font-size: 80px;
 }
-main h2{
-
-    font-size:30px;
-    font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    margin-bottom: -30px;
-    margin-top:-30px;
-}
-
 main p{
-    font-size:25px;
+    padding: 10px;
+    font-size: 30px;
     line-height:1.5;
-    margin-top: -20px;
+    
 }
+main img{
+    margin-bottom:0px;
+    width: 100%;
+    padding: 10px;
+    text-align:center;
+} 
 nav{
     background-color:#faf3ea;
     display:grid;
@@ -59,23 +55,19 @@ nav .heim{
     font-weight:800;
     font-size:32px;
     padding:10px;
-    color: red;
+    color: #515151;
 }
 a:hover {
-color:black;
-}
-
-main img{
-    margin-bottom:20px;
-    width: 100%;
-    border: solid 1px black;
-}
-
+    color:black;
+    } 
 
 @media (max-width:640px){
 .kol-1, .kol-2, .kol-3, .kol-4, .kol-5, .kol-6, .kol-7, .kol-8, .kol-9, .kol-10, .kol-11, .kol-12{
     grid-column:span 12;
 }
+}
+a#trygg{
+    color:red;
 }
 
 

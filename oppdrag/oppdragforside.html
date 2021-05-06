@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+
+<html lang="no">
+
+<head>
+  
+    
+    <link rel="stylesheet" href="data.css">
+    <meta charset="UTF-8">
+    <title>Registrering av oppdrag</title>
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="icon" href="../../bilder/vf.png" type="image/gif" />
+    
+</head>
+<body>
+
+                 <header>
+                        <nav>
+                          <a href="../index.html" class="heim">Voss film AS</a>
+                         <a href="../oppdrag/oppdragforside.html" id="trygg">Oppdrag</a>
+                          <a href="../Tryggleik/tryggleikforside.html">Tryggleik og regelverk</a>
+                         <a href="../Personvern/SosialMe.html">Sosiale medium</a>
+                         <a href="../media/mediaer.html">Bilde og video</a>
+                       </nav>
+                 </header>
+
+
+                 <main id="mainContent">
+                  <h1 class="kol-12">Registrer oppdrag</h1>
+                  <form class="kol-12" id="registreringsSkjema">
+                      <input type="text" id="inpFornamn" required placeholder="Fornamn">
+                      <input type="text" id="inpEtternamn" required placeholder="Etternamn">
+                      <input type="email" id="inpEpost" required placeholder="E-post">
+                      <input type="number" id="inpMobil" required placeholder="Mobilnummer">
+                      <input type="text" id="inpAdresse" required placeholder="Adresse">
+                      <input type="text" id="inpPoststad" required placeholder="Poststad">
+                      <input type="text" id="inpOppdrag" required placeholder="Oppdrag">
+                      <input type="date" id="inpDato" required>
+          
+                      <br><br>
+                      <button type="submit" id="btnOppfør">Oppfør</button>
+                  </form>
+              </main>
+              <br><br>
+              <div id="center">
+              <p class="kol-12" id="txtRegistrering"></p>
+              </div>
+              <!-- The core Firebase JS SDK is always required and must be listed first -->
+          <script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-app.js"></script>
+          
+          <!-- TODO: Add SDKs for Firebase products that you want to use
+               https://firebase.google.com/docs/web/setup#available-libraries -->
+          <script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-analytics.js"></script>
+          <script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-database.js"></script>
+          
+          <script>
+            // Your web app's Firebase configuration
+            // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+            var firebaseConfig = {
+              apiKey: "AIzaSyCkOu5aSlCTdp97gdI5iJONW38EfzcUk8k",
+              authDomain: "oppdragsprosjekt.firebaseapp.com",
+              databaseURL: "https://oppdragsprosjekt-default-rtdb.europe-west1.firebasedatabase.app",
+              projectId: "oppdragsprosjekt",
+              storageBucket: "oppdragsprosjekt.appspot.com",
+              messagingSenderId: "907763634167",
+              appId: "1:907763634167:web:241d0d7b40a20fcfa668f2",
+              measurementId: "G-55C2EH3067"
+            };
+            // Initialize Firebase
+            firebase.initializeApp(firebaseConfig);
+            firebase.analytics();
+          </script>
+              <script>
+                  let database = firebase.database();
+                  let registreringar = database.ref("registreringar");
+                  let registreringsSkjema = document.getElementById("registreringsSkjema");
+                  let inpFornamn = document.getElementById("inpFornamn");
+                  let inpEtternamn = document.getElementById("inpEtternamn");
+                  let inpEpost = document.getElementById("inpEpost");
+                  let inpMobil = document.getElementById("inpMobil");
+                  let inpAdresse = document.getElementById("inpAdresse");
+                  let inpPoststad = document.getElementById("inpPoststad");
+                  let inpOppdrag = document.getElementById("inpOppdrag");
+                  let inpDato = document.getElementById("inpDato");
+                  let txtRegistrering = document.getElementById("txtRegistrering");
+          
+                  function visRegistrering(snapshot) {
+                      var registrering= snapshot.val();
+                      let registreringTekst = `<p class="registrertBorder"><b>Registrert oppdrag:</b> <br>Fornamn: ${registrering.Fornamn}<br>
+                      Etternamn: ${registrering.Etternamn}<br>
+                      E-post: ${registrering.Epost}<br>
+                      Mobilnummer: ${registrering.Mobil}<br> 
+                      Adresse: ${registrering.Adresse}<br>
+                      Poststad: ${registrering.Poststad}<br>
+                      Oppdrag: ${registrering.Oppdrag}<br>
+                      Dato: ${registrering.Dato}</p>`;
+                      txtRegistrering.innerHTML = txtRegistrering.innerHTML + registreringTekst;
+                  }
+                  function regNyregistrering(evt) {
+                      evt.preventDefault();
+                      var nyRegistrering = {
+                          Fornamn: inpFornamn.value,
+                          Etternamn: inpEtternamn.value,
+                          Epost: inpEpost.value,
+                          Mobil: inpMobil.value,
+                          Adresse: inpAdresse.value,
+                          Poststad: inpPoststad.value,
+                          Oppdrag: inpOppdrag.value,
+                          Dato: inpDato.value,
+                      };
+                      registreringar.push(nyRegistrering);
+                      registreringsSkjema.value = "";
+                  }
+                  registreringar.on("child_added", visRegistrering);
+                  registreringsSkjema.onsubmit = regNyregistrering;
+              </script>
+
+          
+
+</body>
+
+</html>
